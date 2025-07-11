@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+    --font-merriweather: Merriweather, serif;
+}
+
 * {
-    padding: 0;
-    margin: 0;
+    font-family: "Open Sans", sans-serif;
     box-sizing: border-box;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
