@@ -39,7 +39,7 @@ const Navbar = () => {
                                 <a
                                     key={item.name}
                                     href={`#${item.name.toLowerCase()}`}
-                                    className="text-gray-700 hover:text-green-600 px-3 py-2 text-md font-normal transition-colors duration-200 flex items-center space-x-1"
+                                    className="text-gray-700 hover:text-green-primary px-3 py-2 text-md font-normal transition-colors duration-200 flex items-center space-x-1"
                                 >
                                     <span>{item.name}</span>
                                 </a>
@@ -52,7 +52,7 @@ const Navbar = () => {
                         <div className="flex items-center justify-center">
                             <Dropdown
                                 mainText={
-                                    <IoLanguageOutline className="w-6 h-6 text-gray-700 hover:text-green-600 cursor-pointer transition-colors duration-200" />
+                                    <IoLanguageOutline className="w-6 h-6 text-gray-700 hover:text-green-primary cursor-pointer transition-colors duration-200" />
                                 }
                                 menuItems={[
                                     { content: "AR" },
@@ -61,18 +61,18 @@ const Navbar = () => {
                             />
                         </div>
                         <div className="relative">
-                            <FiShoppingCart className="w-6 h-6 text-gray-700 hover:text-green-600 cursor-pointer transition-colors duration-200" />
-                            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                            <FiShoppingCart className="w-6 h-6 text-gray-700 hover:text-green-primary cursor-pointer transition-colors duration-200" />
+                            <span className="absolute -top-2 -right-2 bg-green-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                                 {cartItemsCounter}
                             </span>
                         </div>
-                        <FiUser className="w-6 h-6 text-gray-700 hover:text-green-600 cursor-pointer transition-colors duration-200" />
+                        <FiUser className="w-6 h-6 text-gray-700 hover:text-green-primary cursor-pointer transition-colors duration-200" />
 
                         {/* Mobile menu button */}
                         <div className="md:hidden">
                             <button
                                 onClick={toggleMenu}
-                                className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
+                                className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-green-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
                             >
                                 {isMenuOpen ? (
                                     <FiX className="block h-6 w-6" />
@@ -93,7 +93,7 @@ const Navbar = () => {
                             <a
                                 key={item.name}
                                 href={`#${item.name.toLowerCase()}`}
-                                className="text-gray-700 hover:text-green-600 hover:bg-gray-50 px-3 py-2 text-base font-medium transition-colors duration-200 flex items-center space-x-3"
+                                className="text-gray-700 hover:text-green-primary hover:bg-gray-50 px-3 py-2 text-base font-medium transition-colors duration-200 flex items-center space-x-3"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 <span>{item.name}</span>

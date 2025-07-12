@@ -58,7 +58,7 @@ const Footer = () => {
                                 <li key={link.name}>
                                     <a
                                         href={link.href}
-                                        className="text-gray-300 hover:text-green-400 transition-colors duration-200 flex items-center space-x-2 text-md"
+                                        className="text-gray-300 hover:text-green-primary transition-colors duration-200 flex items-center space-x-2 text-md"
                                     >
                                         <span>{link.name}</span>
                                     </a>
@@ -77,7 +77,7 @@ const Footer = () => {
                                 <li key={link.name}>
                                     <a
                                         href={link.href}
-                                        className="text-gray-300 hover:text-green-400 transition-colors duration-200 flex items-center space-x-2 text-md"
+                                        className="text-gray-300 hover:text-green-primary transition-colors duration-200 flex items-center space-x-2 text-md"
                                     >
                                         <span>{link.name}</span>
                                     </a>
@@ -96,7 +96,7 @@ const Footer = () => {
                                 <li key={link.name}>
                                     <a
                                         href={link.href}
-                                        className="text-gray-300 hover:text-green-400 transition-colors duration-200 flex items-center space-x-2 text-md"
+                                        className="text-gray-300 hover:text-green-primary transition-colors duration-200 flex items-center space-x-2 text-md"
                                     >
                                         <span>{link.name}</span>
                                     </a>
@@ -120,7 +120,7 @@ const Footer = () => {
                                 <a
                                     key={social.name}
                                     href={social.href}
-                                    className="text-gray-400 hover:text-green-400 transition-colors duration-200"
+                                    className="text-gray-400 hover:text-green-primary transition-colors duration-200"
                                     aria-label={social.name}
                                 >
                                     <social.icon className="w-5 h-5" />
