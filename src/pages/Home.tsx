@@ -1,12 +1,15 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
+import { AdSection } from "../features/home/AdSection";
+import { BestSellingSection } from "../features/home/BestSellingSection";
+import { FeaturesBanner } from "../features/home/FeaturesBanner";
+import { HeroSection } from "../features/home/HeroSection";
 
 const Home = () => {
     return (
         <>
-            <Navbar />
-            <div>Home page</div>
-            <Footer />
+            <HeroSection />
+            <FeaturesBanner />
+            <BestSellingSection />
+            <AdSection />
         </>
     );
 };
