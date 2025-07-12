@@ -28,7 +28,10 @@ export const FeaturesBanner = () => {
     return (
         <div className="bg-black flex gap-8 items-center justify-center py-12">
             {features.map(({ icon, title, subtitle }) => (
-                <div className="flex gap-4 bg-gray-primary rounded-lg text-white p-8">
+                <div
+                    key={title}
+                    className="flex gap-4 bg-gray-primary rounded-lg text-white p-8"
+                >
                     <div className="text-green-primary">{icon}</div>
                     <div className="flex flex-col">
                         <p className="text-lg font-merriweather! font-semibold">
