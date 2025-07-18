@@ -15,7 +15,7 @@ export const BestSellingSection = () => {
 
             {/* Product Cards */}
             <div className="grid grid-cols-4 gap-x-4 justify-center items-center">
-                {db.products.map((product) => (
+                {db.products.slice(0, 4).map((product) => (
                     <ProductCard key={product.id} {...product} />
                 ))}
             </div>
