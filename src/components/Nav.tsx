@@ -3,6 +3,7 @@ import { FiMenu, FiX, FiShoppingCart, FiUser } from "react-icons/fi";
 import Brand from "../assets/brand.svg";
 import { Dropdown } from "./Dropdown";
 import { IoLanguageOutline } from "react-icons/io5";
+import { Link } from "react-router";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,11 +15,11 @@ const Navbar = () => {
     const [cartItemsCounter] = useState<number>(0);
 
     const navItems = [
-        { name: "About" },
-        { name: "Everything" },
-        { name: "Groceries" },
-        { name: "Juice" },
-        { name: "Contact" },
+        { name: "About", href: "about" },
+        { name: "Everything", href: "products" },
+        { name: "Groceries", href: "products?category=groceries" },
+        { name: "Juice", href: "products?category=juice" },
+        { name: "Contact", href: "contact" },
     ];
 
     return (
@@ -27,22 +28,25 @@ const Navbar = () => {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="flex-shrink-0 flex items-center">
-                        <div className="w-36 h-8 flex items-center justify-center">
+                        <Link
+                            to="/"
+                            className="w-36 h-8 flex items-center justify-center"
+                        >
                             <img src={Brand} />
-                        </div>
+                        </Link>
                     </div>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-8">
                             {navItems.map((item) => (
-                                <a
+                                <Link
                                     key={item.name}
-                                    href={`#${item.name.toLowerCase()}`}
+                                    to={item.href}
                                     className="text-gray-700 hover:text-green-primary px-3 py-2 text-md font-normal transition-colors duration-200 flex items-center space-x-1"
                                 >
                                     <span>{item.name}</span>
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </div>
