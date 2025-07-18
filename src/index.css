@@ -9,6 +9,9 @@
 * {
     font-family: "Open Sans", sans-serif;
     box-sizing: border-box;
+    &::selection {
+        background-color: #6a9739ae;
+    }
 }
 
 #root {
