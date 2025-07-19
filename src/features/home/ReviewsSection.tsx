@@ -1,16 +1,14 @@
 import { FiShoppingCart } from "react-icons/fi";
-import leafImage from "../../assets/leaf.png";
 import { db } from "../../utils/db";
 import { ReviewCard } from "./ReviewCard";
 import { Link } from "react-router";
+import { SectionTitle } from "../../components/SectionTitle";
 
 export const ReviewsSection = () => {
     return (
         <section className="relative px-16 py-24 flex flex-col gap-8 before:bg-[url(/hero-section-background.png)] before:bg-no-repeat before:bg-left-top before:bg-size-[30%] before:block before:absolute before:left-0 before:bottom-0 before:w-full before:h-full before:opacity-25 before:pointer-events-none before:z-[-1]">
-            <h1 className="font-merriweather! font-bold text-4xl text-center">
-                Customers Reviews
-            </h1>
-            <img src={leafImage} alt="" className="w-18 mx-auto" />
+            <SectionTitle title="Customers Reviews" />
+
             {/* Reviews  */}
             <div className="flex gap-8 max-w-7xl mx-auto mt-16 items-end">
                 {db.reviews.slice(0, 2).map((review, index) => {
