@@ -3,6 +3,13 @@ import sanitizer1 from "../assets/products/sanitizer/sanitizer.jpg";
 import chillies1 from "../assets/products/chillies/red-chillies.jpg";
 import oil1 from "../assets/products/oil/edible-oil.jpg";
 import orangeJuice1 from "../assets/products/orange-juice/orage-juice.jpg";
+import faceScrub1 from "../assets/products/face-scrub/face-wash.jpg";
+import cashewButter1 from "../assets/products/cashew-butter/cashew-butter-500.jpg";
+import cookies1 from "../assets/products/cookies/diabetic-cookies.jpg";
+import eggs1 from "../assets/products/eggs/eggs.jpg";
+import honey1 from "../assets/products/honey/organic-honey.jpg";
+import pulses1 from "../assets/products/pulses/pulses.jpg";
+import wheat1 from "../assets/products/wheat/wheat.jpg";
 
 export interface Product {
     id: string;
@@ -88,10 +95,91 @@ export const db: DB = {
             price: 18,
             description:
                 "Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non incidunt lores ta porro ame. numquam eius modi tempora incidunt lores ta porro ame.",
-            category: "Groceries",
+            category: "Juice",
             rating: 4.5,
             mainImage: orangeJuice1,
             images: [orangeJuice1],
+        },
+        {
+            id: "id6",
+            title: "Cashew Butter",
+            price: 35,
+            hasDiscount: true,
+            discountPercentage: 25,
+            category: "Groceries",
+            description:
+                "Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non incidunt lores ta porro ame. numquam eius modi tempora incidunt lores ta porro ame.",
+            rating: 3.5,
+            mainImage: cashewButter1,
+            images: [cashewButter1],
+        },
+        {
+            id: "id7",
+            title: "Diabetic Cookies",
+            price: 35,
+            hasDiscount: true,
+            discountPercentage: 25,
+            category: "Groceries",
+            description:
+                "Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non incidunt lores ta porro ame. numquam eius modi tempora incidunt lores ta porro ame.",
+            rating: 4.5,
+            mainImage: cookies1,
+            images: [cookies1],
+        },
+        {
+            id: "id8",
+            title: "Farm Fresh Eggs",
+            price: 34,
+            category: "Groceries",
+            description:
+                "Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non incidunt lores ta porro ame. numquam eius modi tempora incidunt lores ta porro ame.",
+            rating: 4.5,
+            mainImage: eggs1,
+            images: [eggs1],
+        },
+        {
+            id: "id9",
+            title: "Fresh Organic Honey",
+            price: 34,
+            category: "Groceries",
+            description:
+                "Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non incidunt lores ta porro ame. numquam eius modi tempora incidunt lores ta porro ame.",
+            rating: 4.5,
+            mainImage: honey1,
+            images: [honey1],
+        },
+        {
+            id: "id10",
+            title: "Pulses From Organic Farm",
+            price: 15,
+            category: "Groceries",
+            description:
+                "Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non incidunt lores ta porro ame. numquam eius modi tempora incidunt lores ta porro ame.",
+            rating: 4.5,
+            mainImage: pulses1,
+            images: [pulses1],
+        },
+        {
+            id: "id11",
+            title: "Organic Face Scrub",
+            price: 35,
+            category: "Groceries",
+            description:
+                "Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non incidunt lores ta porro ame. numquam eius modi tempora incidunt lores ta porro ame.",
+            rating: 5,
+            mainImage: faceScrub1,
+            images: [faceScrub1],
+        },
+        {
+            id: "id12",
+            title: "Wheat From Organic Farms",
+            price: 34,
+            category: "Groceries",
+            description:
+                "Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non incidunt lores ta porro ame. numquam eius modi tempora incidunt lores ta porro ame.",
+            rating: 5,
+            mainImage: wheat1,
+            images: [wheat1],
         },
     ],
     reviews: [
