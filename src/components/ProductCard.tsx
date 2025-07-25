@@ -9,6 +9,7 @@ const ProductCard: FC<Product> = (product) => {
             product.price - product.price * (product.discountPercentage! / 100),
         );
     }
+
     const formattedOriginalPrice = new Intl.NumberFormat("en-En", {
         style: "currency",
         currency: "USD",
@@ -19,7 +20,7 @@ const ProductCard: FC<Product> = (product) => {
     }).format(price);
 
     return (
-        <Link to={`products/${product.id}`} className="relative">
+        <Link to={`/products/${product.id}`} className="relative">
             <img src={product.mainImage} alt="" />
 
             {/* Text info */}
