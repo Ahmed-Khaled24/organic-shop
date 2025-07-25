@@ -4,15 +4,27 @@ import Brand from "../assets/brand.svg";
 import { Dropdown } from "./Dropdown";
 import { IoLanguageOutline } from "react-icons/io5";
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
+import type { RootState } from "../app/store";
+import { CartPreview } from "../features/cart/CartPreview";
 
 const Navbar = () => {
+    const cartState = useSelector((state: RootState) => state.cart);
+    const cartItemsCounter = cartState.items.reduce((acc, cur) => {
+        acc += cur.count;
+        return acc;
+    }, 0);
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [cartPreviewIsOpen, setCartPreviewOpen] = useState(false);
+
+    const toggleCartPreview = (nextState?: boolean) => {
+        setCartPreviewOpen((prev) => nextState ?? !prev);
+    };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
-    const [cartItemsCounter] = useState<number>(0);
 
     const navItems = [
         { name: "About", href: "about" },
@@ -64,8 +76,15 @@ const Navbar = () => {
                                 ]}
                             />
                         </div>
-                        <div className="relative">
-                            <FiShoppingCart className="w-6 h-6 text-gray-700 hover:text-green-primary cursor-pointer transition-colors duration-200" />
+                        <div
+                            className="relative cursor-pointer"
+                            onClick={() => toggleCartPreview(true)}
+                        >
+                            <CartPreview
+                                isOpen={cartPreviewIsOpen}
+                                toggleOpen={toggleCartPreview}
+                            />
+                            <FiShoppingCart className="w-6 h-6 text-gray-700 hover:text-green-primary transition-colors duration-200" />
                             <span className="absolute -top-2 -right-2 bg-green-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                                 {cartItemsCounter}
                             </span>
