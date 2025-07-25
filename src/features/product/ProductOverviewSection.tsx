@@ -7,27 +7,25 @@ import AESVG from "../../assets/payment-icons/ae.svg";
 import VisaSVG from "../../assets/payment-icons/visa.svg";
 import MastercardSVG from "../../assets/payment-icons/mastercard.svg";
 import DiscoverSVG from "../../assets/payment-icons/discover.svg";
+import { addToCart } from "../cart/cartSlice";
+import { useDispatch } from "react-redux";
+import { calculateFormattedDiscountedPrice } from "../../utils/discount-price";
 
 const ProductOverviewSection: FC<Partial<Product>> = (product) => {
     const [cartCounter, setCartCounter] = useState(1);
+    const dispatch = useDispatch();
 
-    let price = product?.price ?? -1;
-    if (product?.hasDiscount) {
-        price = Math.trunc(
-            product?.price! -
-                product?.price! * (product?.discountPercentage! / 100),
+    const { formattedCurrentPrice, formattedOriginalPrice } =
+        calculateFormattedDiscountedPrice(product as Required<Product>);
+
+    const addToCartHandler = () => {
+        dispatch(
+            addToCart({
+                productId: product.id!,
+                count: cartCounter,
+            }),
         );
-    }
-
-    const formattedCurrentPrice = new Intl.NumberFormat("en-En", {
-        style: "currency",
-        currency: "USD",
-    }).format(price);
-
-    const formattedOriginalPrice = new Intl.NumberFormat("en-En", {
-        style: "currency",
-        currency: "USD",
-    }).format(product?.price ?? -1);
+    };
 
     return (
         <section className="grid grid-cols-2 gap-24 w-full h-auto">
@@ -76,7 +74,10 @@ const ProductOverviewSection: FC<Partial<Product>> = (product) => {
                         }
                         className="bg-white border-1 border-gray-300 rounded-none min-w-0 data-focus:outline-none p-2 w-16"
                     />
-                    <Button className="bg-green-primary  text-white cursor-pointer font-semibold rounded-sm w-full">
+                    <Button
+                        className="bg-green-primary  text-white cursor-pointer font-semibold rounded-sm w-full"
+                        onClick={addToCartHandler}
+                    >
                         ADD TO CART
                     </Button>
                 </div>
