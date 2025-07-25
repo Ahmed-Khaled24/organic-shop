@@ -4,6 +4,7 @@ import { PublicLayout } from "../layouts/PublicLayout";
 import { Contact } from "../pages/Contact";
 import { About } from "../pages/About";
 import { Products } from "../pages/Products";
+import { Product } from "../pages/Product";
 
 export const router = createBrowserRouter([
     {
@@ -24,7 +25,13 @@ export const router = createBrowserRouter([
             },
             {
                 path: "products",
-                Component: Products,
+                children: [
+                    { index: true, Component: Products },
+                    {
+                        path: ":id",
+                        Component: Product,
+                    },
+                ],
             },
         ],
     },
