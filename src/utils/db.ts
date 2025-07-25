@@ -205,3 +205,7 @@ export const db: DB = {
         },
     ],
 };
+
+export const getProductById = (id: string) => {
+    return db.products.find((product) => product.id == id);
+};
