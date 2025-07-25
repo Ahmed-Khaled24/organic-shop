@@ -17,20 +17,20 @@ const Navbar = () => {
     const navItems = [
         { name: "About", href: "about" },
         { name: "Everything", href: "products" },
-        { name: "Groceries", href: "products?category=groceries" },
-        { name: "Juice", href: "products?category=juice" },
+        { name: "Groceries", href: "products?category=Groceries" },
+        { name: "Juice", href: "products?category=Juice" },
         { name: "Contact", href: "contact" },
     ];
 
     return (
         <nav>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="flex-shrink-0 flex items-center">
                         <Link
                             to="/"
-                            className="w-36 h-8 flex items-center justify-center"
+                            className="w-36 h-auto flex items-center justify-center"
                         >
                             <img src={Brand} />
                         </Link>
