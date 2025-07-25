@@ -1,23 +1,11 @@
 import { type FC } from "react";
 import type { Product } from "../utils/db";
 import { Link } from "react-router";
+import { calculateFormattedDiscountedPrice } from "../utils/discount-price";
 
 const ProductCard: FC<Product> = (product) => {
-    let price = product.price;
-    if (product.hasDiscount) {
-        price = Math.trunc(
-            product.price - product.price * (product.discountPercentage! / 100),
-        );
-    }
-
-    const formattedOriginalPrice = new Intl.NumberFormat("en-En", {
-        style: "currency",
-        currency: "USD",
-    }).format(product.price);
-    const formattedCurrentPrice = new Intl.NumberFormat("en-En", {
-        style: "currency",
-        currency: "USD",
-    }).format(price);
+    const { formattedOriginalPrice, formattedCurrentPrice } =
+        calculateFormattedDiscountedPrice(product);
 
     return (
         <Link to={`/products/${product.id}`} className="relative">
