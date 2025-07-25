@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
 import { db } from "../utils/db";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
     Button,
     Input,
@@ -23,18 +23,58 @@ export const Products = () => {
     const category = (location.search || "?category=Shop").split("=")[1];
 
     const [products, setProducts] = useState(db.products);
+
+    useEffect(() => {
+        switch (category.toLowerCase()) {
+            case "juice": {
+                setProducts(
+                    db.products.filter(
+                        (product) => product.category.toLowerCase() == "juice",
+                    ),
+                );
+                break;
+            }
+            case "groceries":
+                {
+                    setProducts(
+                        db.products.filter(
+                            (product) =>
+                                product.category.toLowerCase() == "groceries",
+                        ),
+                    );
+                }
+                break;
+            default:
+                setProducts(db.products);
+                break;
+        }
+    }, [category]);
+
     const [sortOption, setSortOption] = useState("Default sorting");
 
     const handleSortProducts = (option: SortOptions) => {
         setSortOption(option);
-        const sortedProducts = products.toSorted((a, b) => a.price - b.price);
+        const sortedProducts = products.toSorted((a, b) => {
+            let priceA = a.price;
+            let priceB = b.price;
+
+            if (a.hasDiscount) {
+                priceA *= (100 - (a.discountPercentage ?? 0)) / 100;
+            }
+
+            if (b.hasDiscount) {
+                priceB *= (100 - (b.discountPercentage ?? 0)) / 100;
+            }
+
+            return priceA - priceB;
+        });
         switch (option) {
             case SortOptions.PRICE_HIGH_TO_LOW: {
-                setProducts(sortedProducts);
+                setProducts(sortedProducts.toReversed());
                 break;
             }
             case SortOptions.PRICE_LOW_TO_HIGH: {
-                setProducts(sortedProducts.toReversed());
+                setProducts(sortedProducts);
                 break;
             }
             default: {
@@ -59,9 +99,9 @@ export const Products = () => {
     }, []);
 
     const categoriesDescriptions: Record<string, string> = {
-        juice: "juice ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim, velit et luctus interdum, est quam scelerisque tellus, eget luctus mi diam vitae erat. Praesent porttitor lacus vitae dictum posuere. Suspendisse elementum metus ac dolor tincidunt, eu imperdiet nisi dictum.",
-        groceries:
-            "groceries ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim, velit et luctus interdum, est quam scelerisque tellus, eget luctus mi diam vitae erat. Praesent porttitor lacus vitae dictum posuere. Suspendisse elementum metus ac dolor tincidunt, eu imperdiet nisi dictum.",
+        Juice: "Juice ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim, velit et luctus interdum, est quam scelerisque tellus, eget luctus mi diam vitae erat. Praesent porttitor lacus vitae dictum posuere. Suspendisse elementum metus ac dolor tincidunt, eu imperdiet nisi dictum.",
+        Groceries:
+            "Groceries ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim, velit et luctus interdum, est quam scelerisque tellus, eget luctus mi diam vitae erat. Praesent porttitor lacus vitae dictum posuere. Suspendisse elementum metus ac dolor tincidunt, eu imperdiet nisi dictum.",
     };
 
     return (
