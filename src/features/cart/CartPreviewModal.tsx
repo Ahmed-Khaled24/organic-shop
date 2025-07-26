@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { useEffect, type FC } from "react";
 import { Modal } from "../../components/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../app/store";
@@ -7,7 +7,7 @@ import { formatPrice } from "../../utils/format-price";
 import { Button } from "@headlessui/react";
 import { IoClose } from "react-icons/io5";
 import { removeFromCart } from "./cartSlice";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 interface CartPreviewProps {
     isOpen: boolean;
@@ -15,7 +15,12 @@ interface CartPreviewProps {
 }
 export const CartPreview: FC<CartPreviewProps> = (options) => {
     const dispatch = useDispatch();
+    const location = useLocation();
     const cartItems = useSelector((state: RootState) => state.cart.items);
+
+    useEffect(() => {
+        options.toggleOpen(false);
+    }, [location]);
 
     const cartSubtotal = cartItems.reduce((acc, cur) => {
         const { currentPrice } = calculateFormattedDiscountedPrice(cur.product);
@@ -26,9 +31,9 @@ export const CartPreview: FC<CartPreviewProps> = (options) => {
 
     return (
         <Modal title="Shopping Cart" {...options}>
-            <div className="mt-8">
+            <div className="mt-8 ">
                 {/* Items */}
-                <div className="px-8 flex flex-col gap-4">
+                <div className="px-8 flex flex-col gap-4 max-h-[60vh] overflow-y-auto">
                     {cartItems.map((item) => {
                         const { currentPrice: itemCurrentPrice } =
                             calculateFormattedDiscountedPrice(item.product);
@@ -70,6 +75,11 @@ export const CartPreview: FC<CartPreviewProps> = (options) => {
                             </div>
                         );
                     })}
+                    {cartItems.length === 0 && (
+                        <p className="text-xl font-semibold text-center opacity-50">
+                            Your cart is empty.
+                        </p>
+                    )}
                 </div>
 
                 {/* Subtotal */}
@@ -80,12 +90,18 @@ export const CartPreview: FC<CartPreviewProps> = (options) => {
 
                 {/* Buttons */}
                 <div className="flex flex-col gap-2 p-4">
-                    <Button className="bg-green-primary text-white font-semibold py-2 rounded-sm cursor-pointer">
+                    <Link
+                        className="bg-green-primary text-white font-semibold py-2 rounded-sm cursor-pointer text-center"
+                        to={"/checkout"}
+                    >
                         Checkout
-                    </Button>
-                    <Button className="bg-green-primary text-white font-semibold py-2 rounded-sm cursor-pointer">
+                    </Link>
+                    <Link
+                        className="bg-green-primary text-white font-semibold py-2 rounded-sm cursor-pointer text-center"
+                        to={"/cart"}
+                    >
                         View Cart
-                    </Button>
+                    </Link>
                 </div>
             </div>
         </Modal>

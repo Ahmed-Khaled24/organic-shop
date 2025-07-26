@@ -129,7 +129,7 @@ export const Products = () => {
                     <div className="flex flex-col gap-2">
                         <Link
                             className="text-green-primary"
-                            to={`/products?category=groceries`}
+                            to={`/products?category=Groceries`}
                         >
                             Groceries
                             <span className="text-black ml-1">
@@ -138,7 +138,7 @@ export const Products = () => {
                         </Link>
                         <Link
                             className="text-green-primary"
-                            to={`/products?category=juice`}
+                            to={`/products?category=Juice`}
                         >
                             Juice
                             <span className="text-black ml-1">

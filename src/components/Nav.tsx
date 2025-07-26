@@ -6,7 +6,7 @@ import { IoLanguageOutline } from "react-icons/io5";
 import { Link } from "react-router";
 import { useSelector } from "react-redux";
 import type { RootState } from "../app/store";
-import { CartPreview } from "../features/cart/CartPreview";
+import { CartPreview } from "../features/cart/CartPreviewModal";
 
 const Navbar = () => {
     const cartState = useSelector((state: RootState) => state.cart);
