@@ -1,6 +1,5 @@
 import { type FC } from "react";
 import { FaArrowRight } from "react-icons/fa";
-import { Link } from "react-router";
 import CustomButton from "../../components/CustomButton";
 
 export interface AdCardProps {
