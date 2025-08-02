@@ -13,28 +13,28 @@ import { IoMdArrowDropleft } from "react-icons/io";
 export const Contact = () => {
     const questions = [
         {
-            q: "Pulvinar nostrud class cum facilis?",
-            a: "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+            q: "What makes your products “organic”?",
+            a: "All our products are certified organic, meaning they are grown without synthetic pesticides, fertilizers, GMOs, or harmful additives. We source directly from trusted farms that follow sustainable agricultural practices.",
         },
         {
-            q: "Pulvinar nostrud class cum facilis?",
-            a: "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+            q: "How do you ensure product freshness during delivery?",
+            a: "We use eco-friendly, insulated packaging and work with reliable delivery partners to ensure that your items reach you fresh and in perfect condition. Perishable goods are packed on the day of dispatch.",
         },
         {
-            q: "Pulvinar nostrud class cum facilis?",
-            a: "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+            q: "Do you offer subscription or bulk purchase options?",
+            a: "Yes! You can subscribe to weekly or monthly deliveries for essentials like fruits, vegetables, or grains. We also offer bulk discounts for select pantry items to help you save more.",
         },
         {
-            q: "Pulvinar nostrud class cum facilis?",
-            a: "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+            q: "What if I’m not satisfied with a product I received?",
+            a: "Your satisfaction is our priority. If you're unhappy with any item, you can request a replacement or a full refund within 48 hours of delivery. Just contact our customer support with your order details.",
         },
         {
-            q: "Pulvinar nostrud class cum facilis?",
-            a: "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+            q: "Are your packaging materials sustainable?",
+            a: "Absolutely. We prioritize using recyclable, biodegradable, and reusable packaging materials to minimize environmental impact and align with our eco-conscious mission.",
         },
         {
-            q: "Pulvinar nostrud class cum facilis?",
-            a: "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+            q: "Do you deliver nationwide?",
+            a: "Currently, we deliver to all major cities and surrounding areas. We are working to expand our reach. You can enter your zip code at checkout to confirm if we deliver to your location.",
         },
     ];
     return (

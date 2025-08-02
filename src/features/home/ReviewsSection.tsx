@@ -1,8 +1,8 @@
 import { FiShoppingCart } from "react-icons/fi";
 import { db } from "../../utils/db";
 import { ReviewCard } from "./ReviewCard";
-import { Link } from "react-router";
 import { SectionTitle } from "../../components/SectionTitle";
+import CustomButton from "../../components/CustomButton";
 
 export const ReviewsSection = () => {
     return (
@@ -25,15 +25,13 @@ export const ReviewsSection = () => {
                                         I am text block. Click edit button to
                                         change this tex em ips.
                                     </p>
-                                    <Link
-                                        to={"/products"}
-                                        className="bg-green-primary py-3 px-8 rounded-md text-white flex items-center gap-3 mt-auto z-[0]"
+                                    <CustomButton
+                                        link={"/products"}
+                                        className="py-3 px-8 gap-3 mt-auto z-[0] text-sm"
                                     >
-                                        <FiShoppingCart />
-                                        <span className="font-semibold text-sm">
-                                            SHOP NOW
-                                        </span>
-                                    </Link>
+                                        <FiShoppingCart size={18} />
+                                        SHOP NOW
+                                    </CustomButton>
                                 </div>
                             </>
                         );

@@ -1,7 +1,7 @@
 import { FiShoppingCart } from "react-icons/fi";
 import MainImage from "../../assets/hero-section-main-image.png";
 import SecondaryImage from "../../assets/leaf.png";
-import { Link } from "react-router";
+import CustomButton from "../../components/CustomButton";
 
 export const HeroSection = () => {
     return (
@@ -23,13 +23,13 @@ export const HeroSection = () => {
                         Ut elit tellus, luctus nec ullamcorper mattis, pulvinar
                         dapibus leo.
                     </p>
-                    <Link
-                        className="px-10 py-3 mt-6 bg-green-primary text-white rounded-md font-semibold flex gap-2 items-center cursor-pointer"
-                        to={"products"}
+                    <CustomButton
+                        className="mt-6 py-3 text-sm gap-4"
+                        link={"/products"}
                     >
                         <FiShoppingCart size={18} />
-                        Shop Now
-                    </Link>
+                        shop now
+                    </CustomButton>
                 </div>
             </div>
         </section>

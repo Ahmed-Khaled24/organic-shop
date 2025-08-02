@@ -32,14 +32,19 @@ export const Product = () => {
                     <TabGroup>
                         <TabList className="flex gap-4 border-t-2 border-gray-300 text-lg font-semibold">
                             {tabs.map((tab) => (
-                                <Tab className="relative opacity-60 py-2 cursor-pointer data-selected:opacity-100 data-selected:before:absolute data-selected:before:h-1 data-selected:before:bg-green-primary data-selected:before:-top-0.5 data-selected:before:w-full data-selected:outline-none">
+                                <Tab
+                                    key={tab.tabTitle}
+                                    className="relative opacity-60 py-2 cursor-pointer data-selected:opacity-100 data-selected:before:absolute data-selected:before:h-1 data-selected:before:bg-green-primary data-selected:before:-top-0.5 data-selected:before:w-full data-selected:outline-none"
+                                >
                                     {tab.tabTitle}
                                 </Tab>
                             ))}
                         </TabList>
                         <TabPanels className="mt-4">
                             {tabs.map((tab) => (
-                                <TabPanel>{tab.tabPanel}</TabPanel>
+                                <TabPanel key={tab.tabTitle}>
+                                    {tab.tabPanel}
+                                </TabPanel>
                             ))}
                         </TabPanels>
                     </TabGroup>
@@ -51,7 +56,7 @@ export const Product = () => {
                     </h2>
                     <div className="grid grid-cols-4 gap-6">
                         {db.products.slice(1, 4).map((product) => (
-                            <ProductCard {...product} />
+                            <ProductCard key={product.id} {...product} />
                         ))}
                     </div>
                 </section>

@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router";
 import { db } from "../utils/db";
 import { useEffect, useMemo, useState } from "react";
 import {
-    Button,
     Input,
     Menu,
     MenuButton,
@@ -12,6 +11,7 @@ import {
 import ProductCard from "../components/ProductCard";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { MdArrowDropDown } from "react-icons/md";
+import CustomButton from "../components/CustomButton";
 
 enum SortOptions {
     PRICE_LOW_TO_HIGH = "Price low to high",
@@ -117,13 +117,9 @@ export const Products = () => {
                                 "bg-white p-3 data-focus:outline-none border-1 border-gray-300 min-w-0 rounded-sm"
                             }
                         />
-                        <Button
-                            className={
-                                "bg-green-primary text-white rounded-sm p-2"
-                            }
-                        >
+                        <CustomButton className="rounded-sm p-2! aspect-1">
                             <RiArrowRightSLine size={32} />
-                        </Button>
+                        </CustomButton>
                     </div>
                     {/* Links */}
                     <div className="flex flex-col gap-2">

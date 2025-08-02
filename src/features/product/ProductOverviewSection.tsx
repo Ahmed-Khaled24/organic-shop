@@ -1,7 +1,7 @@
 import { useState, type FC } from "react";
 import type { Product } from "../../utils/db";
 import Zoom from "react-medium-image-zoom";
-import { Button, Input } from "@headlessui/react";
+import { Input } from "@headlessui/react";
 import { Link } from "react-router";
 import AESVG from "../../assets/payment-icons/ae.svg";
 import VisaSVG from "../../assets/payment-icons/visa.svg";
@@ -10,6 +10,7 @@ import DiscoverSVG from "../../assets/payment-icons/discover.svg";
 import { addToCart } from "../cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { calculateFormattedDiscountedPrice } from "../../utils/discount-price";
+import CustomButton from "../../components/CustomButton";
 
 const ProductOverviewSection: FC<Partial<Product>> = (product) => {
     const [cartCounter, setCartCounter] = useState(1);
@@ -74,12 +75,12 @@ const ProductOverviewSection: FC<Partial<Product>> = (product) => {
                         }
                         className="bg-white border-1 border-gray-300 rounded-none min-w-0 data-focus:outline-none p-2 w-16"
                     />
-                    <Button
-                        className="bg-green-primary  text-white cursor-pointer font-semibold rounded-sm w-full"
+                    <CustomButton
+                        className="rounded-sm w-full"
                         onClick={addToCartHandler}
                     >
-                        ADD TO CART
-                    </Button>
+                        Add to cart
+                    </CustomButton>
                 </div>
 
                 <hr className="border-gray-300 my-4" />

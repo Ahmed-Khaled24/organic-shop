@@ -12,24 +12,32 @@ export const About = () => {
                 />
             </h1>
             {/* We are your favorite store */}
-            <section className="flex max-w-7xl mx-auto py-24 gap-16">
+            <section className="flex max-w-7xl mx-auto py-24 gap-16 items-center">
                 <div className="w-1/2 flex flex-col gap-8 p-16">
                     <h2 className="font-bold font-merriweather! text-4xl">
                         We Are Your Favorite Store.
                     </h2>
                     <p>
-                        Tuas quisquam quo gravida proident harum, aptent ligula
-                        anim consequuntur, ultrices mauris, nunc voluptates
-                        lobortis, varius, potenti placeat! Fuga omnis. Cubilia
-                        congue. Recusandae. Vero penatibus quasi! Nostra tenetur
-                        dignissimos ultrices natus distinctio ultrices
-                        consequuntur numqu.
+                        At our core, we believe that healthy living starts with
+                        what you consume—and that's why we’ve dedicated
+                        ourselves to bringing you the highest quality organic
+                        products, all in one convenient online store. From fresh
+                        fruits and vegetables to pantry staples and natural
+                        skincare, everything we offer is carefully selected from
+                        trusted farms and ethical producers. We’re more than
+                        just a store; we’re your partner in living a cleaner,
+                        more conscious lifestyle.
                     </p>
                     <p>
-                        Officiis fuga harum porro et? Similique rhoncus atque!
-                        Netus blanditiis provident nunc posuere. Rem sequi,
-                        commodo, lorem tellus elit, hic sem tenetur anim amet
-                        quas, malesuada proident platea corrupti expedita.
+                        What makes us your favorite store isn’t just our
+                        products—it’s the experience. From a seamless shopping
+                        journey to eco-friendly packaging and fast delivery,
+                        we’re committed to making healthy choices easy and
+                        accessible. Our friendly support team is always here to
+                        help, and we love listening to your feedback to keep
+                        improving. When you shop with us, you’re not just buying
+                        organic—you’re joining a community that values quality,
+                        sustainability, and well-being.
                     </p>
                 </div>
                 <div className="w-1/2">

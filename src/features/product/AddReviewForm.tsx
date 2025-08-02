@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import type { Product } from "../../utils/db";
-import { Button, Field, Input, Label, Textarea } from "@headlessui/react";
+import { Field, Input, Label, Textarea } from "@headlessui/react";
+import CustomButton from "../../components/CustomButton";
 
 export const AddReviewForm: FC<Partial<Product>> = (product) => {
     return (
@@ -51,12 +52,9 @@ export const AddReviewForm: FC<Partial<Product>> = (product) => {
                             the next time I comment.
                         </Label>
                     </Field>
-                    <Button
-                        type="submit"
-                        className="self-start bg-green-primary cursor-pointer text-white px-8 py-2 rounded-sm font-semibold"
-                    >
+                    <CustomButton className="self-start rounded-sm">
                         Submit
-                    </Button>
+                    </CustomButton>
                 </div>
             </form>
         </div>

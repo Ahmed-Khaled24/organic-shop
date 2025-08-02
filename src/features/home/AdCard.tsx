@@ -1,6 +1,7 @@
 import { type FC } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router";
+import CustomButton from "../../components/CustomButton";
 
 export interface AdCardProps {
     title: string;
@@ -24,13 +25,13 @@ export const AdCard: FC<AdCardProps> = ({ title, subtitle, image }) => {
                     {title}
                 </h4>
                 <p className="text-md opacity-75">{subtitle}</p>
-                <Link
-                    to={"/products"}
-                    className="bg-green-primary py-3 px-8 rounded-md text-white text-sm flex items-center gap-3 mt-4"
+                <CustomButton
+                    link={"/products"}
+                    className="py-3 px-6 mt-4 text-sm"
                 >
-                    <span className="font-semibold text-sm">SHOP NOW</span>
+                    <span>SHOP NOW</span>
                     <FaArrowRight />
-                </Link>
+                </CustomButton>
             </div>
         </div>
     );

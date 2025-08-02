@@ -3,8 +3,8 @@ import img1 from "../../assets/ad-cards/1.jpg";
 import img2 from "../../assets/ad-cards/2.jpg";
 import img3 from "../../assets/ad-cards/3.jpg";
 import leafImg from "../../assets/basil-leaf.png";
-import { Link } from "react-router";
 import { FiShoppingCart } from "react-icons/fi";
+import CustomButton from "../../components/CustomButton";
 
 export const AdSection = () => {
     const cards: AdCardProps[] = [
@@ -46,13 +46,13 @@ export const AdSection = () => {
                 <p className="font-merriweather! font-bold text-4xl">
                     Get 25% Off On Your First Purchase!
                 </p>
-                <Link
-                    to={"/products"}
-                    className="bg-green-primary py-3 px-8 rounded-md text-white flex items-center gap-3 ml-auto"
+                <CustomButton
+                    link={"/products"}
+                    className="py-3 px-8 gap-3 ml-auto text-sm"
                 >
-                    <FiShoppingCart />
-                    <span className="font-semibold text-sm">SHOP NOW</span>
-                </Link>
+                    <FiShoppingCart size={18} />
+                    shop now
+                </CustomButton>
             </div>
 
             <div className="bg-[#f8f6f3] text-2xl text-center font-merriweather! py-8 font-bold">

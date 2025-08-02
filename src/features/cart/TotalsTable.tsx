@@ -1,9 +1,9 @@
-import { Link } from "react-router";
 import { formatPrice } from "../../utils/format-price";
 import { useSelector } from "react-redux";
 import { calculateFormattedDiscountedPrice } from "../../utils/discount-price";
 import type { RootState } from "../../app/store";
 import classNames from "classnames";
+import CustomButton from "../../components/CustomButton";
 
 export const TotalsTable = () => {
     const cartState = useSelector((state: RootState) => state.cart);
@@ -38,12 +38,9 @@ export const TotalsTable = () => {
             <tfoot>
                 <tr className={`${trClasses}`}>
                     <td colSpan={2} className="p-4!">
-                        <Link
-                            to="/checkout"
-                            className="bg-green-primary text-white p-4 font-semibold rounded-md w-full block text-center"
-                        >
+                        <CustomButton link="/checkout" className="py-3 w-full">
                             PROCEED TO CHECKOUT
-                        </Link>
+                        </CustomButton>
                     </td>
                 </tr>
             </tfoot>

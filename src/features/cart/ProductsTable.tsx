@@ -8,6 +8,7 @@ import { Button, Input } from "@headlessui/react";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router";
 import { formatPrice } from "../../utils/format-price";
+import CustomButton from "../../components/CustomButton";
 
 export const ProductsTable = () => {
     const dispatch = useDispatch();
@@ -106,9 +107,9 @@ export const ProductsTable = () => {
                                 className="bg-white p-2 border-1 border-gray-300 rounded-sm data-focus:outline-none"
                                 placeholder="Coupon Code"
                             />
-                            <Button className="bg-green-primary text-white py-2 px-6 ml-2 rounded-sm text-sm font-semibold cursor-pointer">
-                                APPLY COUPON
-                            </Button>
+                            <CustomButton className="px-6! ml-2 rounded-sm text-sm">
+                                apply coupon
+                            </CustomButton>
                         </div>
                     </td>
                 </tr>

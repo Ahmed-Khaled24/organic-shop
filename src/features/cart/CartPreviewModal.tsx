@@ -8,6 +8,7 @@ import { Button } from "@headlessui/react";
 import { IoClose } from "react-icons/io5";
 import { removeFromCart } from "./cartSlice";
 import { Link, useLocation } from "react-router";
+import CustomButton from "../../components/CustomButton";
 
 interface CartPreviewProps {
     isOpen: boolean;
@@ -90,18 +91,29 @@ export const CartPreview: FC<CartPreviewProps> = (options) => {
 
                 {/* Buttons */}
                 <div className="flex flex-col gap-2 p-4">
-                    <Link
-                        className="bg-green-primary text-white font-semibold py-2 rounded-sm cursor-pointer text-center"
-                        to={"/checkout"}
-                    >
-                        Checkout
-                    </Link>
-                    <Link
-                        className="bg-green-primary text-white font-semibold py-2 rounded-sm cursor-pointer text-center"
-                        to={"/cart"}
-                    >
-                        View Cart
-                    </Link>
+                    {cartItems.length > 0 ? (
+                        <>
+                            <CustomButton
+                                className="rounded-sm"
+                                link={"/checkout"}
+                            >
+                                Checkout
+                            </CustomButton>
+                            <CustomButton
+                                className="rounded-sm "
+                                link={"/cart"}
+                            >
+                                View Cart
+                            </CustomButton>
+                        </>
+                    ) : (
+                        <CustomButton
+                            className="rounded-sm"
+                            onClick={() => options.toggleOpen(false)}
+                        >
+                            Continue Shopping
+                        </CustomButton>
+                    )}
                 </div>
             </div>
         </Modal>
