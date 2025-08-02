@@ -1,7 +1,9 @@
 import type { FC } from "react";
 import type { Product } from "../../utils/db";
-import { Field, Input, Label, Textarea } from "@headlessui/react";
+import { Field, Input, Label } from "@headlessui/react";
 import CustomButton from "../../components/CustomButton";
+import CustomInput from "../../components/CustomInput";
+import CustomTextarea from "../../components/CustomTextarea";
 
 export const AddReviewForm: FC<Partial<Product>> = (product) => {
     return (
@@ -16,37 +18,23 @@ export const AddReviewForm: FC<Partial<Product>> = (product) => {
                     are marked *
                 </p>
                 <div className="flex flex-col gap-4 mt-4">
-                    <Field className="flex flex-col gap-2">
-                        <Label>Your review *</Label>
-                        <Textarea
-                            name="review"
-                            className="bg-white p-3 border-gray-300 border-1"
-                        />
-                    </Field>
+                    <CustomTextarea label="Your review *" background="white" />
+
                     <div className="flex gap-4 items-center">
-                        <Field className="flex flex-col gap-2 w-1/2">
-                            <Label>Name *</Label>
-                            <Input
-                                name="name"
-                                type="text"
-                                className="bg-white p-3 border-gray-300 border-1"
-                            />
-                        </Field>
-                        <Field className="flex flex-col gap-2 w-1/2">
-                            <Label>Email *</Label>
-                            <Input
-                                name="email"
-                                type="text"
-                                className="bg-white p-3 border-gray-300 border-1"
-                            />
-                        </Field>
+                        <CustomInput
+                            label="Name *"
+                            wrapperClassName="w-1/2"
+                            background="white"
+                        />
+                        <CustomInput
+                            label="Email *"
+                            type="email"
+                            wrapperClassName="w-1/2"
+                            background="white"
+                        />
                     </div>
                     <Field className="flex gap-2">
-                        <Input
-                            name="email"
-                            type="checkbox"
-                            className="bg-white p-3 border-gray-300 border-1"
-                        />
+                        <Input type="checkbox" />
                         <Label>
                             Save my name, email, and website in this browser for
                             the next time I comment.
