@@ -25,7 +25,7 @@ export const Dropdown: FC<DropdownProps> = ({ mainText, menuItems }) => {
             </MenuButton>
             <MenuItems
                 anchor="bottom"
-                className="focus-visible:outline-none flex flex-col rounded-xl border-2 border-gray-200"
+                className="focus-visible:outline-none flex flex-col rounded-sm border-2 border-gray-200 bg-white"
             >
                 {menuItems.map((item) => (
                     <MenuItem>

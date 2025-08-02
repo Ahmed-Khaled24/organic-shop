@@ -11,21 +11,28 @@ import { addToCart } from "../cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { calculateFormattedDiscountedPrice } from "../../utils/discount-price";
 import CustomButton from "../../components/CustomButton";
+import { successToast } from "../../utils/toasters";
 
 const ProductOverviewSection: FC<Partial<Product>> = (product) => {
     const [cartCounter, setCartCounter] = useState(1);
+    const [isAdding, setIsAdding] = useState(false);
     const dispatch = useDispatch();
 
     const { formattedCurrentPrice, formattedOriginalPrice } =
         calculateFormattedDiscountedPrice(product as Required<Product>);
 
     const addToCartHandler = () => {
-        dispatch(
-            addToCart({
-                productId: product.id!,
-                count: cartCounter,
-            }),
-        );
+        setIsAdding(true);
+        setTimeout(() => {
+            setIsAdding(false);
+            dispatch(
+                addToCart({
+                    productId: product.id!,
+                    count: cartCounter,
+                }),
+            );
+            successToast("Product added to your cart successfully.");
+        }, 1000);
     };
 
     return (
@@ -76,6 +83,7 @@ const ProductOverviewSection: FC<Partial<Product>> = (product) => {
                         className="bg-white border-1 border-gray-300 rounded-none min-w-0 data-focus:outline-none p-2 w-16"
                     />
                     <CustomButton
+                        loading={isAdding}
                         className="rounded-sm w-full"
                         onClick={addToCartHandler}
                     >

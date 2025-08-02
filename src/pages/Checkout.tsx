@@ -10,6 +10,7 @@ import { IoIosLock } from "react-icons/io";
 import { useState } from "react";
 import { clearCart } from "../features/cart/cartSlice";
 import { useNavigate } from "react-router";
+import { successToast } from "../utils/toasters";
 
 const Checkout = () => {
     const dispatch = useDispatch();
@@ -27,10 +28,11 @@ const Checkout = () => {
     const handleCheckout = () => {
         setIsCheckingOut(true);
         setTimeout(() => {
+            successToast("Your order has been placed successfully.");
             setIsCheckingOut(false);
             dispatch(clearCart());
             navigate("/");
-        }, 2000);
+        }, 4000);
     };
 
     return (
