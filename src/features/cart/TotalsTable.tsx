@@ -4,8 +4,10 @@ import { calculateFormattedDiscountedPrice } from "../../utils/discount-price";
 import type { RootState } from "../../app/store";
 import classNames from "classnames";
 import CustomButton from "../../components/CustomButton";
+import { useTranslation } from "react-i18next";
 
 export const TotalsTable = () => {
+    const { t } = useTranslation();
     const cartState = useSelector((state: RootState) => state.cart);
     const cartSubtotal = cartState.items.reduce((acc, cur) => {
         const { currentPrice } = calculateFormattedDiscountedPrice(cur.product);
@@ -21,17 +23,17 @@ export const TotalsTable = () => {
             <thead>
                 <tr className={`bg-white ${trClasses}`}>
                     <th colSpan={2} className="font-merriweather! text-xl">
-                        Cart totals
+                        {t("Cart.TotalsTable.Title")}
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr className={`${trClasses}`}>
-                    <td>Subtotal</td>
+                    <td>{t("Cart.TotalsTable.Subtotal")}</td>
                     <td>{formattedSubtotal}</td>
                 </tr>
                 <tr className={`${trClasses}`}>
-                    <td>Total</td>
+                    <td>{t("Cart.TotalsTable.Total")}</td>
                     <td>{formattedSubtotal}</td>
                 </tr>
             </tbody>
@@ -39,7 +41,7 @@ export const TotalsTable = () => {
                 <tr className={`${trClasses}`}>
                     <td colSpan={2} className="p-4!">
                         <CustomButton link="/checkout" className="py-3 w-full">
-                            PROCEED TO CHECKOUT
+                            {t("Cart.TotalsTable.CheckoutButton")}
                         </CustomButton>
                     </td>
                 </tr>

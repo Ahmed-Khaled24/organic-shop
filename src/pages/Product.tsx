@@ -6,21 +6,35 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import ProductCard from "../components/ProductCard";
 import ProductOverviewSection from "../features/product/ProductOverviewSection";
 import { AddReviewForm } from "../features/product/AddReviewForm";
+import { useTranslation } from "react-i18next";
 
 export const Product = () => {
+    const {
+        t,
+        i18n: { language },
+    } = useTranslation();
     const { id } = useParams();
     const product = getProductById(id!);
 
     const tabs = [
         {
-            tabTitle: "Description",
-            tabPanel: <>{product?.description}</>,
+            tabTitle: t("Product.Tabs.Description"),
+            tabPanel: (
+                <p>
+                    {language === "ar"
+                        ? product?.description_ar
+                        : product?.description}
+                </p>
+            ),
         },
         {
-            tabTitle: "Reviews",
+            tabTitle: t("Product.Tabs.Reviews"),
             tabPanel: <AddReviewForm {...product} />,
         },
     ];
+
+    const similarProductsSectionTitle =
+        language === "ar" ? "منتجات مشابهة" : "Related Products";
 
     return (
         <main className="bg-off-white">
@@ -52,7 +66,7 @@ export const Product = () => {
                 {/* Similar products */}
                 <section className="flex flex-col gap-6">
                     <h2 className="text-4xl font-bold font-merriweather!">
-                        Related Products
+                        {similarProductsSectionTitle}
                     </h2>
                     <div className="grid grid-cols-4 gap-6">
                         {db.products.slice(1, 4).map((product) => (

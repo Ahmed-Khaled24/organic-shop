@@ -1,32 +1,34 @@
 import { FiInstagram } from "react-icons/fi";
 import { FaFacebook, FaTwitter, FaYelp } from "react-icons/fa";
 import Brand from "../assets/brand-light.png";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+    const { t } = useTranslation();
+
     const websiteLinks = [
-        { name: "About", href: "#about" },
-        { name: "Everything", href: "#everything" },
-        { name: "Groceries", href: "#groceries" },
-        { name: "Juice", href: "#juice" },
-        { name: "Contact", href: "#contact" },
+        { name: t("Footer.WebsiteLinks.About"), href: "#about" },
+        { name: t("Footer.WebsiteLinks.Everything"), href: "#everything" },
+        { name: t("Footer.WebsiteLinks.Groceries"), href: "#groceries" },
+        { name: t("Footer.WebsiteLinks.Juice"), href: "#juice" },
+        { name: t("Footer.WebsiteLinks.Contact"), href: "#contact" },
     ];
 
     const quickLinks = [
-        { name: "Know More About Us", href: "#about-us" },
-        { name: "Visit Store", href: "#store" },
-        { name: "Let's Connect", href: "#connect" },
-        { name: "Locate Stores", href: "#locations" },
+        { name: t("Footer.QuickLinks.KnowMoreAboutUs"), href: "#about-us" },
+        { name: t("Footer.QuickLinks.VisitStore"), href: "#store" },
+        { name: t("Footer.QuickLinks.LetsConnect"), href: "#connect" },
+        { name: t("Footer.QuickLinks.LocateStores"), href: "#locations" },
     ];
 
     const siteLinks = [
-        { name: "Privacy Policy", href: "#privacy" },
-        { name: "Shipping Details", href: "#shipping" },
-        { name: "Offers Coupons", href: "#offers" },
-        { name: "Terms & Conditions", href: "#terms" },
+        { name: t("Footer.SiteLinks.PrivacyPolicy"), href: "#privacy" },
+        { name: t("Footer.SiteLinks.ShippingPolicy"), href: "#shipping" },
+        { name: t("Footer.SiteLinks.RefundPolicy"), href: "#refund" },
+        { name: t("Footer.SiteLinks.TermsOfService"), href: "#terms" },
     ];
 
     const socialLinks = [
-        { name: "Yelp", icon: FaYelp, href: "#yelp" },
         { name: "Facebook", icon: FaFacebook, href: "#facebook" },
         { name: "Twitter", icon: FaTwitter, href: "#twitter" },
         { name: "Instagram", icon: FiInstagram, href: "#instagram" },
@@ -35,23 +37,21 @@ const Footer = () => {
     return (
         <footer className="bg-black text-white mt-auto">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
                     {/* Logo and Description */}
-                    <div className="lg:col-span-1 mr-8">
+                    <div className="lg:col-span-1 me-8">
                         <a className="flex items-center mb-6" href="#">
                             <img src={Brand} />
                         </a>
                         <p className="text-white font-semibold italic text-md leading-relaxed">
-                            Bringing you the freshest organic produce and
-                            natural products sourced directly from local farms.
-                            Your health and our planet matter to us.
+                            {t("Footer.Bio")}
                         </p>
                     </div>
 
                     {/* Website Links */}
                     <div>
                         <h3 className="text-white font-semibold text-xl mb-4 font-merriweather!">
-                            Website
+                            {t("Footer.WebsiteLinks.Title")}
                         </h3>
                         <ul className="space-y-1">
                             {websiteLinks.map((link) => (
@@ -70,7 +70,7 @@ const Footer = () => {
                     {/* Quick Links */}
                     <div>
                         <h3 className="text-white font-semibold text-xl mb-4 font-merriweather!">
-                            Quick Links
+                            {t("Footer.QuickLinks.Title")}
                         </h3>
                         <ul className="space-y-1">
                             {quickLinks.map((link) => (
@@ -89,7 +89,7 @@ const Footer = () => {
                     {/* Site Links */}
                     <div>
                         <h3 className="text-white font-semibold text-xl mb-4 font-merriweather!">
-                            Site Links
+                            {t("Footer.SiteLinks.Title")}
                         </h3>
                         <ul className="space-y-1">
                             {siteLinks.map((link) => (
@@ -111,7 +111,7 @@ const Footer = () => {
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         {/* Copyright */}
                         <div className="text-white font-normal text-md mb-4 md:mb-0">
-                            Copyright © 2025 | Organic Store
+                            {t("Footer.Copyrights")}
                         </div>
 
                         {/* Social Links */}

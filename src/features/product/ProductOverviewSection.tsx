@@ -12,8 +12,13 @@ import { useDispatch } from "react-redux";
 import { calculateFormattedDiscountedPrice } from "../../utils/discount-price";
 import CustomButton from "../../components/CustomButton";
 import { successToast } from "../../utils/toasters";
+import { useTranslation } from "react-i18next";
 
 const ProductOverviewSection: FC<Partial<Product>> = (product) => {
+    const {
+        t,
+        i18n: { language },
+    } = useTranslation();
     const [cartCounter, setCartCounter] = useState(1);
     const [isAdding, setIsAdding] = useState(false);
     const dispatch = useDispatch();
@@ -31,9 +36,19 @@ const ProductOverviewSection: FC<Partial<Product>> = (product) => {
                     count: cartCounter,
                 }),
             );
-            successToast("Product added to your cart successfully.");
+            successToast(t("Toasters.Success.AddToCart"));
         }, 1000);
     };
+
+    const addToCartButtonText =
+        language === "ar" ? "إضافة إلى السلة" : "Add to cart";
+    const productTitle = language === "ar" ? product?.title_ar : product?.title;
+    const productDescription =
+        language === "ar" ? product?.description_ar : product?.description;
+    const path =
+        language === "ar"
+            ? `الرئيسية / ${product?.category_ar} / ${product?.title_ar}`
+            : `Home / ${product?.category} / ${product?.title}`;
 
     return (
         <section className="grid grid-cols-2 gap-24 w-full h-auto">
@@ -46,13 +61,11 @@ const ProductOverviewSection: FC<Partial<Product>> = (product) => {
             </Zoom>
             <div className="flex flex-col gap-2">
                 {/* Path */}
-                <p className="text-black/60">
-                    Home / {product?.category} / {product?.title}
-                </p>
+                <p className="text-black/60">{path}</p>
 
                 {/* Title */}
                 <h2 className="text-3xl font-merriweather! font-bold mb-4">
-                    {product?.title}
+                    {productTitle}
                 </h2>
 
                 {/* Price */}
@@ -64,12 +77,12 @@ const ProductOverviewSection: FC<Partial<Product>> = (product) => {
                     )}
                     <p>{formattedCurrentPrice}</p>
                     <span className="text-base font-normal self-end">
-                        + Free Shipping
+                        + {t("Product.FreeShipping")}
                     </span>
                 </div>
 
                 {/* Description */}
-                <p>{product?.description}</p>
+                <p>{productDescription}</p>
 
                 {/* Add to cart */}
                 <div className="flex gap-4">
@@ -87,25 +100,29 @@ const ProductOverviewSection: FC<Partial<Product>> = (product) => {
                         className="rounded-sm w-full"
                         onClick={addToCartHandler}
                     >
-                        Add to cart
+                        {addToCartButtonText}
                     </CustomButton>
                 </div>
 
                 <hr className="border-gray-300 my-4" />
 
                 <p>
-                    Categories:{" "}
+                    {language === "ar" ? "الفئة: " : "Category: "}
                     <Link
                         to={`/products?category=${product?.category}`}
                         className="text-green-primary"
                     >
-                        {product?.category}
+                        {language === "ar"
+                            ? product?.category_ar
+                            : product?.category}
                     </Link>
                 </p>
 
                 <div className="relative p-6 flex gap-2 justify-center items-center border-1 border-gray-300 mt-6">
                     <span className="absolute top-0 left-1/2 bg-off-white -translate-x-1/2 -translate-y-1/2 font-semibold">
-                        Guaranteed Safe Checkout
+                        {language === "ar"
+                            ? "تسوق آمن ومضمون"
+                            : "Guaranteed Safe Checkout"}
                     </span>
                     <img src={VisaSVG} alt="visa" className="w-12" />
                     <img

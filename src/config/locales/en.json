@@ -1,0 +1,235 @@
+{
+    "Toasters": {
+        "Success": {
+            "AddToCart": "Product added to cart successfully!",
+            "Checkout": "Checkout completed successfully!"
+        },
+        "Error": {}
+    },
+    "Nav": {
+        "Contact": "Contact",
+        "Juice": "Juice",
+        "Groceries": "Groceries",
+        "Everything": "Everything",
+        "About": "About"
+    },
+    "Footer": {
+        "Bio": "Bringing you the freshest organic produce and natural products sourced directly from local farms. Your health and our planet matter to us.",
+        "WebsiteLinks": {
+            "Title": "Website Links",
+            "About": "About",
+            "Everything": "Everything",
+            "Groceries": "Groceries",
+            "Juice": "Juice",
+            "Contact": "Contact"
+        },
+        "QuickLinks": {
+            "Title": "Quick Links",
+            "KnowMoreAboutUs": "Know More About Us",
+            "VisitStore": "Visit Our Store",
+            "LetsConnect": "Let's Connect",
+            "LocateStores": "Locate Our Stores"
+        },
+        "SiteLinks": {
+            "Title": "Learn More",
+            "PrivacyPolicy": "Privacy Policy",
+            "TermsOfService": "Terms of Service",
+            "RefundPolicy": "Refund Policy",
+            "ShippingPolicy": "Shipping Policy"
+        },
+        "Copyrights": "Copyright © 2025 | Organic Store"
+    },
+    "Home": {
+        "HeroSection": {
+            "Title": "Best Quality Products",
+            "SubTitle": "Join The Organic Movement!",
+            "Description": "Enjoy fresh, healthy, natural products, delivered straight from the farm to your doorstep. Experience the difference with our organic selection.",
+            "MainButton": "shop now"
+        },
+        "FeaturesBanner": [
+            {
+                "Title": "Free Shipping",
+                "SubTitle": "Above $5 Only"
+            },
+            {
+                "Title": "Certified Organic",
+                "SubTitle": "100% Guarantee"
+            },
+            {
+                "Title": "Huge Savings",
+                "SubTitle": "At Lowest Price"
+            },
+            {
+                "Title": "Easy Returns",
+                "SubTitle": "No Questions Asked"
+            }
+        ],
+        "BestSellingSection": {
+            "Title": "Best Selling Products"
+        },
+        "AdSection": {
+            "Cards": [
+                {
+                    "Title": "Farm Fresh Fruits",
+                    "SubTitle": "Savor the natural sweetness of our farm fresh fruits, picked at peak ripeness for maximum flavor."
+                },
+                {
+                    "Title": "Fresh Vegetables",
+                    "SubTitle": "Enjoy the natural sweetness of our fresh vegetables, picked at peak ripeness for maximum flavor."
+                },
+                {
+                    "Title": "Organic Legume",
+                    "SubTitle": "Savor the natural sweetness of our organic legumes, harvested at their peak for optimal flavor."
+                }
+            ],
+            "BannerText": "Get 25% Off On Your First Purchase!",
+            "BannerSubText": "Try It For Free. No Registration Needed.",
+            "BannerButtonText": "shop now"
+        },
+        "TrendingProductsSection": {
+            "Title": "Trending Products"
+        },
+        "ReviewsSection": {
+            "Title": "Customers Reviews",
+            "MiddleCardText": "Deal Of The Day 15% Off On All Vegetables!",
+            "MiddleCardSubText": "Discover the freshness of our vegetables with a 15% discount today.",
+            "MiddleCardButtonText": "Shop Now"
+        }
+    },
+    "About": {
+        "Title": "About Us",
+        "ParagraphsTitle": "We Are Your Favorite Store.",
+        "Paragraph1": "At our core, we believe that healthy living starts with what you consume—and that's why we’ve dedicated ourselves to bringing you the highest quality organic products, all in one convenient online store. From fresh fruits and vegetables to pantry staples and natural skincare, everything we offer is carefully selected from trusted farms and ethical producers. We’re more than just a store; we’re your partner in living a cleaner, more conscious lifestyle.",
+        "Paragraph2": "What makes us your favorite store isn’t just our products—it’s the experience. From a seamless shopping journey to eco-friendly packaging and fast delivery, we’re committed to making healthy choices easy and accessible. Our friendly support team is always here to help, and we love listening to your feedback to keep improving. When you shop with us, you’re not just buying organic—you’re joining a community that values quality, sustainability, and well-being."
+    },
+    "Contact": {
+        "Title": "Contact Us",
+        "FAQTitle": "Frequently Asked Questions!",
+        "FAQ": [
+            {
+                "q": "What makes your products “organic”?",
+                "a": "All our products are certified organic, meaning they are grown without synthetic pesticides, fertilizers, GMOs, or harmful additives. We source directly from trusted farms that follow sustainable agricultural practices."
+            },
+            {
+                "q": "How do you ensure product freshness during delivery?",
+                "a": "We use eco-friendly, insulated packaging and work with reliable delivery partners to ensure that your items reach you fresh and in perfect condition. Perishable goods are packed on the day of dispatch."
+            },
+            {
+                "q": "Do you offer subscription or bulk purchase options?",
+                "a": "Yes! You can subscribe to weekly or monthly deliveries for essentials like fruits, vegetables, or grains. We also offer bulk discounts for select pantry items to help you save more."
+            },
+            {
+                "q": "What if I’m not satisfied with a product I received?",
+                "a": "Your satisfaction is our priority. If you're unhappy with any item, you can request a replacement or a full refund within 48 hours of delivery. Just contact our customer support with your order details."
+            },
+            {
+                "q": "Are your packaging materials sustainable?",
+                "a": "Absolutely. We prioritize using recyclable, biodegradable, and reusable packaging materials to minimize environmental impact and align with our eco-conscious mission."
+            },
+            {
+                "q": "Do you deliver nationwide?",
+                "a": "Currently, we deliver to all major cities and surrounding areas. We are working to expand our reach. You can enter your zip code at checkout to confirm if we deliver to your location."
+            }
+        ],
+        "Address": "1569 Avenue, New York, \nNY 10028, USA"
+    },
+    "Products": {
+        "Juice": {
+            "Title": "Juice",
+            "Description": "Explore our range of organic juices, made from the freshest fruits and vegetables to nourish your body and delight your taste buds."
+        },
+        "Groceries": {
+            "Title": "Groceries",
+            "Description": "Discover our selection of organic groceries, including pantry staples, snacks, and more, all sourced from trusted producers."
+        },
+        "Everything": {
+            "Title": "Shop",
+            "Description": "Browse our entire collection of organic products, from fresh produce to household essentials, and enjoy a healthier lifestyle."
+        },
+        "SortingOptions": {
+            "Default": "Default Sorting",
+            "PriceLowToHigh": "Price: Low to High",
+            "PriceHighToLow": "Price: High to Low"
+        },
+        "SearchInputPlaceholder": "Search products..."
+    },
+    "Product": {
+        "FreeShipping": "Free Shipping",
+        "Tabs": {
+            "Description": "Description",
+            "Reviews": "Reviews"
+        },
+        "ReviewForm": {
+            "EmptyMessage": "There is no reviews yet.",
+            "Title": "Be the first to review \"{{productTitle}}\"",
+            "Subtitle": "Your email address will not be published. Required fields are marked *",
+            "Inputs": {
+                "Review": "Your Review *",
+                "Name": "Name *",
+                "Email": "Email *",
+                "SaveData": "Save my name, email, and website in this browser for the next time I comment."
+            },
+            "SubmitButton": "Submit"
+        }
+    },
+    "Cart": {
+        "Title": "Cart",
+        "ItemsTable": {
+            "Headers": {
+                "Product": "Product",
+                "Price": "Price",
+                "Quantity": "Quantity",
+                "Subtotal": "Subtotal"
+            },
+            "EmptyMessage": "Your cart is empty.",
+            "CouponInputPlaceholder": "Enter coupon code",
+            "ApplyButton": "Apply"
+        },
+        "TotalsTable": {
+            "Title": "Cart Totals",
+            "Subtotal": "Subtotal",
+            "Total": "Total",
+            "CheckoutButton": "Proceed to Checkout"
+        }
+    },
+    "Checkout": {
+        "DetailsForm": {
+            "Contact": {
+                "Title": "Contact",
+                "Email": "Email Address"
+            },
+            "Billing": {
+                "Title": "Billing Details",
+                "FirstName": "First Name *",
+                "LastName": "Last Name *",
+                "Country": "Country / Region *",
+                "HouseNumber": "House number and street name *",
+                "Apartment": "Apartment, suite, etc. (optional)",
+                "Town": "Town / City",
+                "State": "State / County",
+                "Postcode": "Postcode / ZIP",
+                "Phone": "Phone *"
+            },
+            "AdditionalInfo": {
+                "Title": "Additional Information",
+                "NotesPlaceholder": "Notes about your order, e.g. special notes for delivery."
+            },
+            "Payment": {
+                "Title": "Payment",
+                "Options": {
+                    "Check": "Check Payments",
+                    "Cash": "Cash on Delivery"
+                }
+            },
+            "PlaceOrderButton": "Place Order"
+        },
+        "OrderSummary": {
+            "Title": "Order Summary",
+            "Total": "Total",
+            "Subtotal": "Subtotal",
+            "Shipping": "Shipping",
+            "CouponInputPlaceholder": "Enter coupon code",
+            "ApplyButton": "Apply"
+        }
+    }
+}

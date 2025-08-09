@@ -12,17 +12,23 @@ import ProductCard from "../components/ProductCard";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { MdArrowDropDown } from "react-icons/md";
 import CustomButton from "../components/CustomButton";
-
-enum SortOptions {
-    PRICE_LOW_TO_HIGH = "Price low to high",
-    PRICE_HIGH_TO_LOW = "Price high to low",
-}
+import { useTranslation } from "react-i18next";
 
 export const Products = () => {
+    const { t, i18n } = useTranslation();
     const location = useLocation();
-    const category = (location.search || "?category=Shop").split("=")[1];
 
     const [products, setProducts] = useState(db.products);
+    const sortingOptions = t("Products.SortingOptions", {
+        returnObjects: true,
+    }) as Record<string, string>;
+
+    const category = (location.search || "?category=Everything").split("=")[1];
+    const path = `${i18n.language === "ar" ? "الرئيسية" : "Home"} / ${t(`Products.${category}.Title`)}`;
+    const showingAllResultsTitle =
+        i18n.language === "ar"
+            ? `عرض الجميع ${Intl.NumberFormat("ar-Eg").format(products.length)} منتج`
+            : `Showing all ${products.length} results`;
 
     useEffect(() => {
         switch (category.toLowerCase()) {
@@ -50,9 +56,9 @@ export const Products = () => {
         }
     }, [category]);
 
-    const [sortOption, setSortOption] = useState("Default sorting");
+    const [sortOption, setSortOption] = useState("Default");
 
-    const handleSortProducts = (option: SortOptions) => {
+    const handleSortProducts = (option: string) => {
         setSortOption(option);
         const sortedProducts = products.toSorted((a, b) => {
             let priceA = a.price;
@@ -69,11 +75,11 @@ export const Products = () => {
             return priceA - priceB;
         });
         switch (option) {
-            case SortOptions.PRICE_HIGH_TO_LOW: {
+            case "PriceHighToLow": {
                 setProducts(sortedProducts.toReversed());
                 break;
             }
-            case SortOptions.PRICE_LOW_TO_HIGH: {
+            case "PriceLowToHigh": {
                 setProducts(sortedProducts);
                 break;
             }
@@ -85,23 +91,31 @@ export const Products = () => {
     };
 
     const juiceCount = useMemo(() => {
-        return products.reduce((acc, product) => {
+        const count = products.reduce((acc, product) => {
             product.category.toLowerCase() == "juice" ? acc++ : acc;
             return acc;
         }, 0);
+        if (i18n.language === "ar") {
+            return Intl.NumberFormat("ar-Eg").format(count);
+        }
+        return count;
     }, []);
 
     const groceriesCount = useMemo(() => {
-        return products.reduce((acc, product) => {
+        const count = products.reduce((acc, product) => {
             product.category.toLowerCase() == "groceries" ? acc++ : acc;
             return acc;
         }, 0);
+        if (i18n.language === "ar") {
+            return Intl.NumberFormat("ar-Eg").format(count);
+        }
+        return count;
     }, []);
 
     const categoriesDescriptions: Record<string, string> = {
-        Juice: "Juice ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim, velit et luctus interdum, est quam scelerisque tellus, eget luctus mi diam vitae erat. Praesent porttitor lacus vitae dictum posuere. Suspendisse elementum metus ac dolor tincidunt, eu imperdiet nisi dictum.",
-        Groceries:
-            "Groceries ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim, velit et luctus interdum, est quam scelerisque tellus, eget luctus mi diam vitae erat. Praesent porttitor lacus vitae dictum posuere. Suspendisse elementum metus ac dolor tincidunt, eu imperdiet nisi dictum.",
+        Juice: t("Products.Juice.Description"),
+        Groceries: t("Products.Groceries.Description"),
+        Everything: t("Products.Everything.Description"),
     };
 
     return (
@@ -112,13 +126,19 @@ export const Products = () => {
                     {/* Search by name */}
                     <div className="flex gap-1">
                         <Input
-                            placeholder="Search products..."
+                            placeholder={t("Products.SearchInputPlaceholder")}
+                            type="text"
                             className={
                                 "bg-white p-3 data-focus:outline-none border-1 border-gray-300 min-w-0 rounded-sm"
                             }
                         />
                         <CustomButton className="rounded-sm p-2! aspect-1">
-                            <RiArrowRightSLine size={32} />
+                            <RiArrowRightSLine
+                                size={32}
+                                style={{
+                                    rotate: `${i18n.language === "ar" ? 180 : 0}deg`,
+                                }}
+                            />
                         </CustomButton>
                     </div>
                     {/* Links */}
@@ -127,7 +147,7 @@ export const Products = () => {
                             className="text-green-primary"
                             to={`/products?category=Groceries`}
                         >
-                            Groceries
+                            {t("Products.Groceries.Title")}{" "}
                             <span className="text-black ml-1">
                                 ({groceriesCount})
                             </span>
@@ -136,7 +156,7 @@ export const Products = () => {
                             className="text-green-primary"
                             to={`/products?category=Juice`}
                         >
-                            Juice
+                            {t("Products.Juice.Title")}{" "}
                             <span className="text-black ml-1">
                                 ({juiceCount})
                             </span>
@@ -147,19 +167,19 @@ export const Products = () => {
                 {/* Products  */}
                 <div className="px-8 w-4/5">
                     <header className="flex flex-col gap-4">
-                        <p className="text-black/60">{`Home / ${category}`}</p>
+                        <p className="text-black/60">{path}</p>
                         <h1 className="capitalize font-merriweather! text-green-primary text-5xl font-bold mb-8">
-                            {category}
+                            {t(`Products.${category}.Title`)}
                         </h1>
                         {/* Category Description */}
                         {category in categoriesDescriptions && (
                             <p> {categoriesDescriptions[`${category}`]}</p>
                         )}
                         <div className="flex justify-between my-8">
-                            <span>Showing all {products.length} results</span>
+                            <span>{showingAllResultsTitle}</span>
                             <Menu>
                                 <MenuButton className="cursor-pointer border-1 px-4 py-2 rounded-md border-gray-300 flex gap-2 items-center">
-                                    {sortOption}
+                                    {sortingOptions[sortOption]}
                                     <MdArrowDropDown size={24} />
                                 </MenuButton>
                                 <MenuItems
@@ -168,22 +188,18 @@ export const Products = () => {
                                     }
                                     anchor="bottom"
                                 >
-                                    {Object.values(SortOptions)
-                                        .concat(["Default sorting"] as any[])
-                                        .map((option) => (
-                                            <MenuItem>
-                                                <span
-                                                    className="px-4 py-2 hover:bg-green-50 cursor-pointer"
-                                                    onClick={() =>
-                                                        handleSortProducts(
-                                                            option,
-                                                        )
-                                                    }
-                                                >
-                                                    {option}
-                                                </span>
-                                            </MenuItem>
-                                        ))}
+                                    {Object.keys(sortingOptions).map((key) => (
+                                        <MenuItem>
+                                            <span
+                                                className="px-4 py-2 hover:bg-green-50 cursor-pointer"
+                                                onClick={() =>
+                                                    handleSortProducts(key)
+                                                }
+                                            >
+                                                {sortingOptions[key]}
+                                            </span>
+                                        </MenuItem>
+                                    ))}
                                 </MenuItems>
                             </Menu>
                         </div>

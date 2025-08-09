@@ -5,28 +5,31 @@ import img3 from "../../assets/ad-cards/3.jpg";
 import leafImg from "../../assets/basil-leaf.png";
 import { FiShoppingCart } from "react-icons/fi";
 import CustomButton from "../../components/CustomButton";
+import { useTranslation } from "react-i18next";
 
 export const AdSection = () => {
+    const { t } = useTranslation();
+    const translatedCards = t("Home.AdSection.Cards", {
+        returnObjects: true,
+    }) as { Title: string; SubTitle: string }[];
     const cards: AdCardProps[] = [
         {
-            title: "Farm Fresh Fruits",
-            subtitle:
-                "Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
+            title: translatedCards[0].Title,
+            subtitle: translatedCards[0].SubTitle,
             image: img1,
         },
         {
-            title: "Fresh Vegetables",
-            subtitle:
-                "Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
+            title: translatedCards[1].Title,
+            subtitle: translatedCards[1].SubTitle,
             image: img2,
         },
         {
-            title: "Organic Legume",
-            subtitle:
-                "Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
+            title: translatedCards[2].Title,
+            subtitle: translatedCards[2].SubTitle,
             image: img3,
         },
     ];
+
     return (
         <section>
             <div className="bg-[#f8f6f3] relative py-24">
@@ -44,19 +47,19 @@ export const AdSection = () => {
 
             <div className="flex py-14 bg-black text-white justify-center items-center gap-4 px-64">
                 <p className="font-merriweather! font-bold text-4xl">
-                    Get 25% Off On Your First Purchase!
+                    {t("Home.AdSection.BannerText")}
                 </p>
                 <CustomButton
                     link={"/products"}
-                    className="py-3 px-8 gap-3 ml-auto text-sm"
+                    className="py-3 px-8 gap-3 ms-auto text-sm"
                 >
                     <FiShoppingCart size={18} />
-                    shop now
+                    {t("Home.AdSection.BannerButtonText")}
                 </CustomButton>
             </div>
 
             <div className="bg-[#f8f6f3] text-2xl text-center font-merriweather! py-8 font-bold">
-                Try It For Free. No Registration Needed.
+                {t("Home.AdSection.BannerSubText")}
             </div>
         </section>
     );

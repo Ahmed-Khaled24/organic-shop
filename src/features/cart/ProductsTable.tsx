@@ -9,8 +9,13 @@ import { IoClose } from "react-icons/io5";
 import { Link } from "react-router";
 import { formatPrice } from "../../utils/format-price";
 import CustomButton from "../../components/CustomButton";
+import { useTranslation } from "react-i18next";
 
 export const ProductsTable = () => {
+    const {
+        t,
+        i18n: { language },
+    } = useTranslation();
     const dispatch = useDispatch();
     const cartState = useSelector((state: RootState) => state.cart);
     const trClasses = classNames("border-1 border-gray-300 p-4");
@@ -21,10 +26,10 @@ export const ProductsTable = () => {
                 <tr className={`${trClasses} bg-white font-semibold`}>
                     <th scope="col"></th>
                     <th scope="col"></th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Subtotal</th>
+                    <th scope="col">{t("Cart.ItemsTable.Headers.Product")}</th>
+                    <th scope="col">{t("Cart.ItemsTable.Headers.Price")}</th>
+                    <th scope="col">{t("Cart.ItemsTable.Headers.Quantity")}</th>
+                    <th scope="col">{t("Cart.ItemsTable.Headers.Subtotal")}</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,7 +76,9 @@ export const ProductsTable = () => {
                                     to={`/products/${item.product.id}`}
                                     className="text-green-primary"
                                 >
-                                    {item.product.title}
+                                    {language === "ar"
+                                        ? item.product.title_ar
+                                        : item.product.title}
                                 </Link>
                             </td>
                             {/* Product price */}
@@ -94,7 +101,7 @@ export const ProductsTable = () => {
                 {cartState.items.length === 0 && (
                     <tr className="text-2xl opacity-50 border-1 border-gray-300">
                         <td colSpan={100} className="py-16! text-center!">
-                            Your cart is empty.
+                            {t("Cart.ItemsTable.EmptyMessage")}
                         </td>
                     </tr>
                 )}
@@ -105,10 +112,12 @@ export const ProductsTable = () => {
                         <div className="flex items-center">
                             <Input
                                 className="bg-white p-2 border-1 border-gray-300 rounded-sm data-focus:outline-none"
-                                placeholder="Coupon Code"
+                                placeholder={t(
+                                    "Cart.ItemsTable.CouponInputPlaceholder",
+                                )}
                             />
-                            <CustomButton className="px-6! ml-2 rounded-sm text-sm">
-                                apply coupon
+                            <CustomButton className="px-6! ms-2 rounded-sm text-sm">
+                                {t("Cart.ItemsTable.ApplyButton")}
                             </CustomButton>
                         </div>
                     </td>

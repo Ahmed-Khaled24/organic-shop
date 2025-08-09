@@ -11,8 +11,13 @@ import { useState } from "react";
 import { clearCart } from "../features/cart/cartSlice";
 import { useNavigate } from "react-router";
 import { successToast } from "../utils/toasters";
+import { useTranslation } from "react-i18next";
 
 const Checkout = () => {
+    const {
+        t,
+        i18n: { language },
+    } = useTranslation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isCheckingOut, setIsCheckingOut] = useState(false);
@@ -24,11 +29,12 @@ const Checkout = () => {
         return acc + curTotal;
     }, 0);
     const formattedSubtotal = formatPrice(cartSubtotal);
+    const formattedShipping = formatPrice(0); // Assuming free shipping for simplicity
 
     const handleCheckout = () => {
         setIsCheckingOut(true);
         setTimeout(() => {
-            successToast("Your order has been placed successfully.");
+            successToast(t("Toasters.Success.Checkout"));
             setIsCheckingOut(false);
             dispatch(clearCart());
             navigate("/");
@@ -42,86 +48,96 @@ const Checkout = () => {
                 <section className="w-1/2 p-10 border-r-1 border-gray-300 flex flex-col gap-10">
                     <div className="flex flex-col gap-2">
                         <h1 className="font-merriweather! font-bold text-xl mb-2">
-                            Contact
+                            {t("Checkout.DetailsForm.Contact.Title")}
                         </h1>
                         <CustomInput
-                            label="Email Address"
+                            label={t("Checkout.DetailsForm.Contact.Email")}
                             labelPosition="embedded"
                             rounded="rounded-md"
                         />
                     </div>
                     <div className="flex flex-col gap-4">
                         <h1 className="font-merriweather! font-bold text-xl mb-2">
-                            Billing Details
+                            {t("Checkout.DetailsForm.Billing.Title")}
                         </h1>
                         <div className="flex gap-2 w-full">
                             <CustomInput
-                                label="First name *"
+                                label={t(
+                                    "Checkout.DetailsForm.Billing.FirstName",
+                                )}
                                 labelPosition="embedded"
                                 rounded="rounded-md"
                                 wrapperClassName="w-1/2"
                             />
                             <CustomInput
-                                label="Last name *"
+                                label={t(
+                                    "Checkout.DetailsForm.Billing.LastName",
+                                )}
                                 labelPosition="embedded"
                                 rounded="rounded-md"
                                 wrapperClassName="w-1/2"
                             />
                         </div>
                         <CustomInput
-                            label="Country / Region *"
+                            label={t("Checkout.DetailsForm.Billing.Country")}
                             labelPosition="embedded"
                             rounded="rounded-md"
                         />
                         <CustomInput
-                            label="House number and street name *"
+                            label={t(
+                                "Checkout.DetailsForm.Billing.HouseNumber",
+                            )}
                             labelPosition="embedded"
                             rounded="rounded-md"
                         />
                         <CustomInput
-                            label="Apartment, suite, unit, etc"
+                            label={t("Checkout.DetailsForm.Billing.Apartment")}
                             labelPosition="embedded"
                             rounded="rounded-md"
                         />
                         <div className="flex gap-2 w-full">
                             <CustomInput
-                                label="Town / City"
+                                label={t("Checkout.DetailsForm.Billing.Town")}
                                 labelPosition="embedded"
                                 rounded="rounded-md"
                                 wrapperClassName="min-w-0 w-1/3"
                             />
                             <CustomInput
-                                label="State / County"
+                                label={t("Checkout.DetailsForm.Billing.State")}
                                 labelPosition="embedded"
                                 rounded="rounded-md"
                                 wrapperClassName="min-w-0 w-1/3"
                             />
                             <CustomInput
-                                label="Postcode / ZIP"
+                                label={t(
+                                    "Checkout.DetailsForm.Billing.Postcode",
+                                )}
                                 labelPosition="embedded"
                                 rounded="rounded-md"
                                 wrapperClassName="min-w-0 w-1/3"
                             />
                         </div>
                         <CustomInput
-                            label="Phone *"
+                            label={t("Checkout.DetailsForm.Billing.Phone")}
                             labelPosition="embedded"
                             rounded="rounded-md"
                         />
                     </div>
                     <div className="flex flex-col gap-2">
                         <h1 className="font-merriweather! font-bold text-xl mb-2">
-                            Additional Information
+                            {t("Checkout.DetailsForm.AdditionalInfo.Title")}
                         </h1>
                         <CustomTextarea
-                            label="Notes about your order, e.g. special notes for delivery"
+                            label={t(
+                                "Checkout.DetailsForm.AdditionalInfo.NotesPlaceholder",
+                            )}
                             labelPosition="embedded"
                             rounded="rounded-md"
                         />
                     </div>
                     <div className="flex flex-col gap-2">
                         <h1 className="font-merriweather! font-bold text-xl mb-2">
-                            Payment
+                            {t("Checkout.DetailsForm.Payment.Title")}
                         </h1>
                         <fieldset className="border-1 border-gray-300 rounded-md">
                             <Field className="flex gap-2 p-3 border-b-1 border-gray-300">
@@ -136,7 +152,9 @@ const Checkout = () => {
                                     htmlFor="check-payments"
                                     className={"select-none"}
                                 >
-                                    Check payments
+                                    {t(
+                                        "Checkout.DetailsForm.Payment.Options.Check",
+                                    )}
                                 </Label>
                             </Field>
                             <Field className="flex gap-2 p-3">
@@ -151,7 +169,9 @@ const Checkout = () => {
                                     htmlFor="cash-on-delivery"
                                     className={"select-none"}
                                 >
-                                    Cash on delivery
+                                    {t(
+                                        "Checkout.DetailsForm.Payment.Options.Cash",
+                                    )}
                                 </Label>
                             </Field>
                         </fieldset>
@@ -162,7 +182,8 @@ const Checkout = () => {
                         loading={isCheckingOut}
                     >
                         <IoIosLock size={20} />
-                        Place Order {formattedSubtotal}
+                        {t("Checkout.DetailsForm.PlaceOrderButton")}{" "}
+                        {formattedSubtotal}
                     </CustomButton>
                 </section>
                 {/* Products */}
@@ -183,9 +204,11 @@ const Checkout = () => {
                                         </span>
                                     </div>
                                     <p className="text-sm">
-                                        {item.product.title}
+                                        {language === "ar"
+                                            ? item.product.title_ar
+                                            : item.product.title}
                                     </p>
-                                    <p className="ml-auto text-sm">
+                                    <p className="ms-auto text-sm">
                                         {formatPrice(currentPrice * item.count)}
                                     </p>
                                 </div>
@@ -194,23 +217,29 @@ const Checkout = () => {
                     </div>
                     <div className="flex gap-2 w-full">
                         <CustomInput
-                            label="Coupon Code"
+                            label={t(
+                                "Checkout.OrderSummary.CouponInputPlaceholder",
+                            )}
                             labelPosition="embedded"
                             background="white"
                             rounded="rounded-sm"
                             wrapperClassName="w-full"
                         />
                         <CustomButton className="rounded-sm text-sm">
-                            Apply
+                            {t("Checkout.OrderSummary.ApplyButton")}
                         </CustomButton>
                     </div>
                     <div className="flex flex-col gap-4">
                         <div className="flex justify-between">
-                            Subtotal
+                            {t("Checkout.OrderSummary.Subtotal")}
                             <span>{formattedSubtotal}</span>
                         </div>
+                        <div className="flex justify-between">
+                            {t("Checkout.OrderSummary.Shipping")}
+                            <span>{formattedShipping}</span>
+                        </div>
                         <div className="flex justify-between text-xl">
-                            Total
+                            {t("Checkout.OrderSummary.Total")}
                             <span>{formattedSubtotal}</span>
                         </div>
                     </div>

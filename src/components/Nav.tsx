@@ -7,8 +7,11 @@ import { Link } from "react-router";
 import { useSelector } from "react-redux";
 import type { RootState } from "../app/store";
 import { CartPreview } from "../features/cart/CartPreviewModal";
+import i18n from "../config/i18n";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+    const { t } = useTranslation();
     const cartState = useSelector((state: RootState) => state.cart);
     const cartItemsCounter = cartState.items.reduce((acc, cur) => {
         acc += cur.count;
@@ -26,12 +29,16 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const handleChangeLanguage = (lang: "ar" | "en") => {
+        i18n.changeLanguage(lang);
+    };
+
     const navItems = [
-        { name: "About", href: "about" },
-        { name: "Everything", href: "products" },
-        { name: "Groceries", href: "products?category=Groceries" },
-        { name: "Juice", href: "products?category=Juice" },
-        { name: "Contact", href: "contact" },
+        { name: t("Nav.About"), href: "about" },
+        { name: t("Nav.Everything"), href: "products" },
+        { name: t("Nav.Groceries"), href: "products?category=Groceries" },
+        { name: t("Nav.Juice"), href: "products?category=Juice" },
+        { name: t("Nav.Contact"), href: "contact" },
     ];
 
     return (
@@ -71,8 +78,16 @@ const Navbar = () => {
                                     <IoLanguageOutline className="w-6 h-6 text-gray-700 hover:text-green-primary cursor-pointer transition-colors duration-200" />
                                 }
                                 menuItems={[
-                                    { content: "AR" },
-                                    { content: "EN" },
+                                    {
+                                        content: "AR",
+                                        clickHandler: () =>
+                                            handleChangeLanguage("ar"),
+                                    },
+                                    {
+                                        content: "EN",
+                                        clickHandler: () =>
+                                            handleChangeLanguage("en"),
+                                    },
                                 ]}
                             />
                         </div>
