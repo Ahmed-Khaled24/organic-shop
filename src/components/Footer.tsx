@@ -1,5 +1,5 @@
 import { FiInstagram } from "react-icons/fi";
-import { FaFacebook, FaTwitter, FaYelp } from "react-icons/fa";
+import { FaFacebook, FaTwitter } from "react-icons/fa";
 import Brand from "../assets/brand-light.png";
 import { useTranslation } from "react-i18next";
 
