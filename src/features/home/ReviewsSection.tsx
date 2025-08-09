@@ -18,7 +18,7 @@ export const ReviewsSection = () => {
                         return (
                             <>
                                 <ReviewCard {...review} />
-                                <div className="relative flex flex-col rounded-md before:rounded-md p-8 w-sm h-110 items-center gap-8 text-white bg-[url(review-bg.jpg)] bg-no-repeat bg-center bg-cover before:w-full before:h-full before:absolute before:z-[0] before:top-0 before:bg-gray-800/50 hover:before:bg-black/75 before:transition-color before:duration-500 before:ease-in-out">
+                                <div className="relative flex flex-col rounded-md before:rounded-md p-8 w-sm h-110 items-center gap-8 text-white bg-[url(/review-bg.jpg)] bg-no-repeat bg-center bg-cover before:w-full before:h-full before:absolute before:z-[0] before:top-0 before:bg-gray-800/50 hover:before:bg-black/75 before:transition-color before:duration-500 before:ease-in-out">
                                     <h3 className="font-merriweather! text-4xl text-center font-bold z-[0] leading-tight">
                                         {t(
                                             "Home.ReviewsSection.MiddleCardText",
